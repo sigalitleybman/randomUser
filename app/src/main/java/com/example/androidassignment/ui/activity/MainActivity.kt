@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         val enteryFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.enteryFragment)
 
         Log.i(TAG, "entered onBackPressed")
-
+        //test
         if (enteryFragment != null && enteryFragment.isVisible){
             Log.i(TAG, "entered if in onBackPressed")
             //userListSavingState = enteryFragment.userList

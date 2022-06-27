@@ -7,13 +7,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 //MODAL class
 data class User (
-/*//  First Name
-    @Json(name = "first")
-    val first: String,
-//  Last Name
-    @Json(name = "last")
-    val last: String,*/
-
     @Json(name = "name")
     var name: Name,
 
