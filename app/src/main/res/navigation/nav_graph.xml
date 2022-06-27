@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/enteryFragment">
+
+    <fragment
+        android:id="@+id/enteryFragment"
+        android:name="com.example.androidassignment.ui.activity.EnteryFragment"
+        android:label="EnteryFragment" >
+
+        <action
+            android:id="@+id/action_enteryFragment_to_userDetailsFragment"
+            app:destination="@id/userDetailsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_in_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/userDetailsFragment"
+        android:name="com.example.androidassignment.ui.activity.UserDetailsFragment"
+        android:label="fragment_user_details"
+        tools:layout="@layout/fragment_user_details" >
+
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.androidassignment.model.User" />
+    </fragment>
+</navigation>
