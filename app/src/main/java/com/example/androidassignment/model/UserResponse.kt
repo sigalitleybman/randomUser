@@ -6,5 +6,5 @@ import com.squareup.moshi.Json
 data class UserResponse(
     //List of users that we will get
     @Json(name = "results")
-    val result: List<User>
+    val result: List<UserInfo>
 )

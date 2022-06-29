@@ -18,15 +18,6 @@
         android:textColor="@color/red"
         android:paddingTop="16dp" />
 
-
-<!--&lt;!&ndash;    for display a single item(fragment) dynamically&ndash;&gt;
-    <FrameLayout
-        android:id="@+id/frameLayoutFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:layout_margin="16dp"/>-->
-
     <androidx.fragment.app.FragmentContainerView
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:id="@+id/navHostFragment"

@@ -6,8 +6,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Birthday (
-    @Json(name = "date")
-    val date: String,
+   /* @Json(name = "date")
+    val date: String,*/
 
     @Json(name = "age")
     val age: Int
