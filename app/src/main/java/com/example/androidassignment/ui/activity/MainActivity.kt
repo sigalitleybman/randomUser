@@ -55,33 +55,43 @@ class MainActivity : AppCompatActivity() {
         var firstName: String
         var lastName: String
         var name: Name
+
         var email: String
+
         var pictureLarge: String
         var picture: Picture
+
         var age: Int
+
         var dob: Birthday
-        val listOfUsers: MutableList<UserInfo> = mutableListOf()
 
-        users.forEach{
-            //converted from User to UserInfo
-            firstName = it.firstName
-            lastName = it.lastName
-            name = Name(firstName, lastName)
+        var listOfUsers: List<User> = users
+        val listOfInfoUsers: MutableList<UserInfo> = mutableListOf()
 
-            email = it.email
-
-            pictureLarge = it.picture
-            picture = Picture(pictureLarge)
-
-            age = it.age
-            dob = Birthday(age)
-
-            //crreate userInfo object and add it to the list of users
-            val userInfo: UserInfo = UserInfo(name, email, picture,dob)
-
-            listOfUsers.add(userInfo)
+        if(listOfUsers.size > 10){
+            listOfUsers = listOfUsers.takeLast(10)
         }
 
-        EnteryFragment.userList = listOfUsers
+        listOfUsers.forEach{user ->
+            //converted from User to UserInfo
+            firstName = user.name.firstName
+            lastName = user.name.lastName
+            name = Name(firstName, lastName)
+
+            email = user.email
+
+            pictureLarge = user.picture
+            picture = Picture(pictureLarge)
+
+            age = user.age
+            dob = Birthday(age)
+
+            //create userInfo object and add it to the list of users
+            val userInfo = UserInfo(name, email, picture,dob)
+
+            listOfInfoUsers.add(userInfo)
+        }
+
+        EnteryFragment.userList = listOfInfoUsers
     }
 }

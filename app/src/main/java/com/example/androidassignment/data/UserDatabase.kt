@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 //UserDataBase class will represent a DB in room library.
+//*******  It's a singleton class *******
 // 1) contains the DB holder
 // 2) serves the main access point for the underlying
 //    connection to our app's persisted, relational data
@@ -16,6 +17,7 @@ abstract class UserDatabase:RoomDatabase() {
     abstract fun userDao(): UserDao
 
     //companion object -> it's like Java static initializer
+
     //we want create one and only instance of this UserDataBase class
     //therefore we will implement Singleton Design Pattern.
     companion object{

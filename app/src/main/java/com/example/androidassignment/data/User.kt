@@ -1,5 +1,6 @@
 package com.example.androidassignment.data
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,9 +9,14 @@ import androidx.room.PrimaryKey
 data class User (
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val firstName: String,
-    val lastName: String,
+    @Embedded
+    val name: Name,
     val email: String,
     val picture: String,
     val age: Int
+)
+
+data class Name(
+    val firstName: String,
+    val lastName: String
 )
