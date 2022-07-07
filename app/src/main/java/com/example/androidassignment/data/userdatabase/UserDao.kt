@@ -1,10 +1,11 @@
-package com.example.androidassignment.data
+package com.example.androidassignment.data.userdatabase
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.androidassignment.data.User
 
 //In this class we will create all the necessary quires
 //which we are going to execute inside our DB
@@ -18,9 +19,13 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addUser(user: User)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun addAllUsers(users: List<User>)
+
     @Query("SELECT * FROM user_table ORDER BY id")
     fun readAllData(): LiveData<List<User>>
 
     @Query("DELETE FROM user_table")
     suspend fun deleteAllUsers()
+
 }

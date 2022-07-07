@@ -1,11 +1,12 @@
-package com.example.androidassignment.data
+package com.example.androidassignment.data.userdatabase
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.androidassignment.data.User
 
-//UserDataBase class will represent a DB in room library.
+//UserDataBase class will represent a DB in Room library.
 //*******  It's a singleton class *******
 // 1) contains the DB holder
 // 2) serves the main access point for the underlying
@@ -13,7 +14,7 @@ import androidx.room.RoomDatabase
 
 //In @Database annotation we will specify our entities (we have only one), Db version, exportSchema
 @Database(entities = [User:: class], version = 1, exportSchema = false)
-abstract class UserDatabase:RoomDatabase() {
+abstract class UserDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
 
     //companion object -> it's like Java static initializer

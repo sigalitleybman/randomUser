@@ -11,7 +11,7 @@ object ApiClient {
     private val BASE_URl = "https://randomuser.me/api/"
 
     //****** Moshi is a modern JSON library for Android, Java and Kotlin.
-    // Itx makes it easy to parse JSON into Java and Kotlin classes ******
+    //It makes it easy to parse JSON into Java and Kotlin classes ******
     //Created variable for moshi builder, adding a converter to it
      private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 

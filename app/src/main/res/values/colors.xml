@@ -10,4 +10,5 @@
     <color name="lightBlue">#E7F4FA</color>
     <color name="red">#F11E51</color>
     <color name="lightPink">#F1D7DD</color>
+    <color name="toast_red">#EC2323</color>
 </resources>

@@ -11,18 +11,13 @@ import com.example.androidassignment.R
 import com.example.androidassignment.model.UserInfo
 import com.squareup.picasso.Picasso
 
-class UserAdapter(val userList: List<UserInfo>, val onUserClickListener: OnUserClickListener): RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+class UserAdapter(var userList: MutableList<UserInfo>, val onUserClickListener: OnUserClickListener): RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val userName = itemView.findViewById<TextView>(R.id.userName)
         val userImage = itemView.findViewById<ImageView>(R.id.userImageView)
         val userEmail = itemView.findViewById<TextView>(R.id.userEmail)
     }
-
-    /*override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false)
-        return ViewHolder(view)
-    }*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         //to inflate user_item to ViewGroup object
@@ -39,7 +34,6 @@ class UserAdapter(val userList: List<UserInfo>, val onUserClickListener: OnUserC
             .load(specificUser.picture.large)
             .placeholder(R.mipmap.ic_launcher)
             .into(holder.userImage)
-//        holder.userCountdownBirthday.text = specificUser.dob.date
 
         //ViewCompat - helper for accessing features in View.
         //GOAL - identify userImage by the user name
@@ -52,8 +46,15 @@ class UserAdapter(val userList: List<UserInfo>, val onUserClickListener: OnUserC
 
     override fun getItemCount(): Int = userList.size
 
-
     interface OnUserClickListener{
         fun onUserClickListener(results: UserInfo, sharedImageView: ImageView)
+    }
+
+    fun setItems(list: List<UserInfo>) {
+        userList.clear()
+        userList.addAll(list)
+
+        //Don't remove notifyDataSetChanged() - pavel checked and said its necessary
+        notifyDataSetChanged()
     }
 }

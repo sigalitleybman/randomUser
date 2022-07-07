@@ -10,6 +10,7 @@
         android:name="com.example.androidassignment.ui.fragments.EnteryFragment"
         android:label="EnteryFragment" >
 
+        <!-- TODO adding slide animation while back to the entry fragment -->
         <action
             android:id="@+id/action_enteryFragment_to_userDetailsFragment"
             app:destination="@id/userDetailsFragment"
@@ -24,6 +25,12 @@
         android:name="com.example.androidassignment.ui.fragments.UserDetailsFragment"
         android:label="fragment_user_details"
         tools:layout="@layout/fragment_user_details" >
+
+   <!--     <action
+            android:id="@+id/action_userDetailsFragment_to_action_enteryFragment"
+            app:destination="@id/enteryFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"/>-->
 
         <argument
             android:name="currentUser"
