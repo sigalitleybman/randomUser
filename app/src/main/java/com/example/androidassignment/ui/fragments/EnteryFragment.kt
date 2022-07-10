@@ -2,6 +2,7 @@ package com.example.androidassignment.ui.fragments
 
 import android.content.IntentFilter
 import android.net.ConnectivityManager
+import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -102,8 +103,9 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
              setDataToEntryFragment()
          }*/
 
-         //TODO check about Observe
-         //observe its when we want database will observe for updates while app is running
+         //Observer connected to LivaData.
+         // Whenever we change the data in recycleView, LiveData NOTIFY to each OBSERVER.
+         // So here this code will executed after we open the app and after each refresh.
          userViewModel.readAllData.observe(viewLifecycleOwner, Observer { listOfUsersFromDB ->
              listOfUsersFromDB?.let {
                     listOfUsers -> run {
@@ -133,17 +135,12 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
     override fun onResume() {
         super.onResume()
 
-        //TODO - NOT WORKING !!!
         swipeRefreshLayout.setOnRefreshListener{
             getAllUsersFromApiService()
 
-            //userAdapter.userList = userList
-
-            //TODO - PAVLO DID WITHOUT THIS SECTION AND IT WORKED - WHY?!
-           /* updateUserListInUserAdapter(userList)
-            //TODO convert uset list from MutableList<UserInfo> to LiveData<List<User>>
-            userViewModel.readAllData = userList as LiveData<List<User>>*/
-
+            //After we will insert new users to the db, the LiveData in ViewModel will notify
+            //to the observer in onViewCreated() and then: userAdapter.setItems(userList) line
+            //will update the view with new loaded users.
             insertDataToDatabase(userList)
 
             registerToConnectionModeReciever()
@@ -196,12 +193,14 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
                     //here we are adding our data from api to our array list
                     userList = (response.body()?.result as MutableList<UserInfo>?)!!
 
-                    //instead of do all the logc of create an adapter i just update the list.
+                  /*  //instead of do all the logc of create an adapter i just update the list.
                     //because it is not the first call so no need for all of this...
                     //setDataToEntryFragment()
 
-                    insertDataToDatabase(userList)
+                   // insertDataToDatabase(userList)*/
 
+                }else{
+                    Log.d(Constants.TAG, "Problem with get usere from the api")
                 }
             }
 
@@ -213,7 +212,7 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
     }
 
     //TODO - need just Update the userList in UserAdapter class. no need for all this logic!
-    //TODO - in first time do all what written here and when refresh just update the list
+    // in first time do all what written here and when refresh just update the list
   /*  private fun setDataToEntryFragment(){
         userAdapter = UserAdapter(userList, this@EnteryFragment)
         fragmentEnteryRecyclerView.adapter = userAdapter
@@ -286,8 +285,9 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
         Log.d(Constants.TAG, "$i users added")*/
     }
 
-    //TODO - this method called just for one check and not for the all run of the program. thus, no need for observe
-    // because observe it's when you want the db will observe for updates while all running.
+    //TODO - this method called just for one check and not for the all run of the program.
+    // thus, no need for observe because observe it's when you want the db will observe
+    // for updates while all running.
     private fun checkIfThereIsExistingDataInDB(): Boolean{
         /*var isExsist = true
 

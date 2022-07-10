@@ -7,17 +7,11 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager.CONNECTIVITY_ACTION
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.androidassignment.R
 import com.example.androidassignment.data.User
 import com.example.androidassignment.data.viewmodel.UserViewModel
 import com.example.androidassignment.intents.ConnectionModeChangedReceiver
-import com.example.androidassignment.model.UserInfo
-import com.example.androidassignment.ui.fragments.EnteryFragment
-import com.example.androidassignment.utils.ConvertLiveDataListToUserInfo
-import com.example.androidassignment.utils.ConvertUserListToUserInfoList
 
 
 class MainActivity : AppCompatActivity() {
@@ -67,8 +61,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-
-
 
         /*//for identify the current displaying fragment
         val navHostFragment: Fragment? = supportFragmentManager.findFragmentById(R.id.navHostFragment)

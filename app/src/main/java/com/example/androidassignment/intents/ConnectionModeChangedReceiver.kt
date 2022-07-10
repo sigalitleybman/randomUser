@@ -40,7 +40,7 @@ class ConnectionModeChangedReceiver: BroadcastReceiver() {
             if(isConnectionModeDisabled){
                 Toast.makeText(context, "Please turn on your connection mode", Toast.LENGTH_LONG).show()
             }else{
-                Toast.makeText(context, "Connection mode enabaled", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, "Connection mode enabaled", Toast.LENGTH_SHORT).show()
             }
         }
     }

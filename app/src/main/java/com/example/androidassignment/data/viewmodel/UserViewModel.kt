@@ -13,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 //From UserViewModel we are going to access all our queries from our UserDao class.
-//This class communicate between Repository and the UI.
+//This class connected between Repository and the UI.
 class UserViewModel(application: Application): AndroidViewModel(application){
     //LiveData = notify observer objects when lifeCycle change
     var readAllData: LiveData<List<User>>
