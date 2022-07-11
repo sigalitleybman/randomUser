@@ -104,7 +104,7 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
          }*/
 
          //Observer connected to LivaData.
-         // Whenever we change the data in recycleView, LiveData NOTIFY to each OBSERVER.
+         // Whenever we change the data in recycleView, LiveData NOTIFY to each of the OBSERVERs.
          // So here this code will executed after we open the app and after each refresh.
          userViewModel.readAllData.observe(viewLifecycleOwner, Observer { listOfUsersFromDB ->
              listOfUsersFromDB?.let {
@@ -238,9 +238,7 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
     override fun onUserClickListener(results: UserInfo, sharedImageView: ImageView) {
         when(sharedImageView.id){
             R.id.userImageView -> {
-                //bundle -> it's key+value:
-                //key - currentUser
-                //value- results(the chosen user)
+                //bundle -> it's key+value: key - currentUser ,value - results(the chosen user)
                 val bundle = bundleOf("currentUser" to results)
                 //navController.navigate(R.id.action_enteryFragment_to_userDetailsFragment, bundle)
                 //insertDataToDatabase()

@@ -13,10 +13,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 //From UserViewModel we are going to access all our queries from our UserDao class.
-//This class connected between Repository and the UI.
+//UserViewModel Acts as a communication center between the Repository (data) and the UI.
 class UserViewModel(application: Application): AndroidViewModel(application){
-    //LiveData = notify observer objects when lifeCycle change
-    var readAllData: LiveData<List<User>>
+    //LiveData NOTIFY observer objects (in UI) every time the data changes in the database.
+    //--> Holds all the data needed for the UI.
+    lateinit var readAllData: LiveData<List<User>>
     private val repository: UserRepository
 
     /*companion object{
@@ -25,21 +26,23 @@ class UserViewModel(application: Application): AndroidViewModel(application){
 
     init {
         val userDao = UserDatabase.getDatabase(application)!!.userDao()
-        repository = UserRepository(userDao)
-        readAllData = repository.readAllData
+        //repository = UserRepository(userDao)
+        //readAllData = repository.readAllData
+        repository = UserRepository
+        repository.setUserDao(userDao)
+        readAllData = repository.getReadAllData()
     }
 
     fun addUser(user: User){
-        //viewModelScope -> part of coroutine = divide cpu time between different jobs.
-        //Dispatchers.IO -> means that i want to run this code in a background thread
+        //viewModelScope -> part of coroutine(divide cpu time between different jobs).
+        //A SCOPE controls the lifetime of coroutines through its job.
+        //Dispatchers.IO -> means that i want to run this code in a background thread.
         viewModelScope.launch(Dispatchers.IO) {
             repository.addUser(user)
         }
     }
 
     fun addAllUsers(users: List<User>){
-        //viewModelScope -> part of coroutine = divide cpu time between different jobs.
-        //Dispatchers.IO -> means that i want to run this code in a background thread
         viewModelScope.launch(Dispatchers.IO) {
             repository.addAllUsers(users)
         }

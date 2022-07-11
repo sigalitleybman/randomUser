@@ -27,7 +27,8 @@ abstract class UserDatabase: RoomDatabase() {
 
         fun getDatabase(context: Context): UserDatabase? {
             if(INSTANCE == null){
-                synchronized(this){
+                //it was synchronized(this) and i changed to synchronized(UserDatabase::class.java)
+                synchronized(UserDatabase::class.java){
                     if(INSTANCE == null){
                         INSTANCE = Room.databaseBuilder(
                             context.applicationContext,

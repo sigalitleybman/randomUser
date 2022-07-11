@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso
 
 class UserAdapter(var userList: MutableList<UserInfo>, val onUserClickListener: OnUserClickListener): RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
+    //ViewHolder will display each user in our userList
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val userName = itemView.findViewById<TextView>(R.id.userName)
         val userImage = itemView.findViewById<ImageView>(R.id.userImageView)
