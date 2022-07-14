@@ -13,7 +13,9 @@ import com.squareup.picasso.Picasso
 
 class UserAdapter(var userList: MutableList<UserInfo>, val onUserClickListener: OnUserClickListener): RecyclerView.Adapter<UserAdapter.ViewHolder>(){
 
-    //ViewHolder will display each user in our userList
+    /**
+     * ViewHolder will display each user in our userList.
+     */
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val userName = itemView.findViewById<TextView>(R.id.userName)
         val userImage = itemView.findViewById<ImageView>(R.id.userImageView)
@@ -21,11 +23,13 @@ class UserAdapter(var userList: MutableList<UserInfo>, val onUserClickListener: 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        //to inflate user_item to ViewGroup object
+        //to inflate user_item to ViewGroup object.
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.user_item, parent, false))
     }
 
-    //here we setting the data in the entery fragment from our User class
+    /**
+     * Here we setting the data in the entery fragment from our User class.
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val specificUser: UserInfo = userList[position]
 
@@ -36,8 +40,10 @@ class UserAdapter(var userList: MutableList<UserInfo>, val onUserClickListener: 
             .placeholder(R.mipmap.ic_launcher)
             .into(holder.userImage)
 
-        //ViewCompat - helper for accessing features in View.
-        //GOAL - identify userImage by the user name
+        /**
+         * ViewCompat is a helper for accessing features in View.
+         * The goal is to identify userImage by the user name.
+         */
         ViewCompat.setTransitionName(holder.userImage, "${specificUser.name.first} ${specificUser.name.last}")
 
         holder.itemView.setOnClickListener {
@@ -55,7 +61,6 @@ class UserAdapter(var userList: MutableList<UserInfo>, val onUserClickListener: 
         userList.clear()
         userList.addAll(list)
 
-        //Don't remove notifyDataSetChanged() - pavel checked and said its necessary
         notifyDataSetChanged()
     }
 }

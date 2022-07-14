@@ -17,23 +17,17 @@ import com.example.androidassignment.databinding.FragmentUserDetailsBinding.infl
 import com.example.androidassignment.databinding.ToastForConnectionModeBinding.inflate
 import com.example.androidassignment.databinding.UserItemBinding.inflate
 
-//Implicit approach because it's not act directly but just subscribe to this event
-
-//BroadcastReceiver - it's like an Notify class
+/**
+ * Implicit approach because it's not act directly but just subscribe to this event.
+ * BroadcastReceiver - it's like an Notify class.
+ */
 class ConnectionModeChangedReceiver: BroadcastReceiver() {
-
-    //This code will executed when user will press on connection mode.
-    //intent has the information if connection mode is set to on or to off.
-    //The system will see which app want to be notified to the intent.
+    /**
+     * This code will executed when user will press on connection mode.
+     * Intent has the information if connection mode is set to on or to off.
+     * The system will see which app want to be notified to the intent.
+     */
     override fun onReceive(context: Context?, intent: Intent?) {
-      /*  val isConnectionModeEnabled = intent?.getBooleanExtra("state", true) ?: return
-
-        if(isConnectionModeEnabled){
-            Toast.makeText(context, "Connection mode enabaled", Toast.LENGTH_SHORT).show()
-        }else{
-            Toast.makeText(context, "Please turn on your connection mode", Toast.LENGTH_SHORT).show()
-        }*/
-
         if(ConnectivityManager.CONNECTIVITY_ACTION.equals(intent?.action)){
             val isConnectionModeDisabled = intent?.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, false) ?: return
 
@@ -44,15 +38,5 @@ class ConnectionModeChangedReceiver: BroadcastReceiver() {
             }
         }
     }
-
-    /*private fun showToast(text: String){
-        //val inflater: LayoutInflater = getLayout
-        val layout: View = LayoutInflater.inflate(R.layout.toast_for_connection_mode, (ViewGroup)findViewById(R.id.toast_toot))
-        val toast: Toast = Toast(ApplicationContext)
-        toast.setGravity(Gravity.CENTER, 0, 0)
-        toast.duration(Toast.LENGTH_SHORT)
-        toast.view(layout)
-        toast.show()
-    }*/
 
 }

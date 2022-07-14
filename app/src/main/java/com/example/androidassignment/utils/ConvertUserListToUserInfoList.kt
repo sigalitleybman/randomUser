@@ -7,7 +7,6 @@ import com.example.androidassignment.model.Picture
 import com.example.androidassignment.model.UserInfo
 import com.example.androidassignment.ui.fragments.EnteryFragment
 
-//TODO - cast to generics <T> while recieve and while return
 class ConvertUserListToUserInfoList {
     object Consts{
         const val lastUsers = 10
@@ -55,8 +54,6 @@ class ConvertUserListToUserInfoList {
             }
 
             return listOfInfoUsers
-
-            //EnteryFragment.userList = listOfInfoUsers
         }
     }
 }

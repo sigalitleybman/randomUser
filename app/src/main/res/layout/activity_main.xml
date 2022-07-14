@@ -18,6 +18,13 @@
         android:textColor="@color/red"
         android:paddingTop="16dp" />
 
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/musicButton"
+        android:textOff="PLAY MUSIC"
+        android:textOn="STOP MUSIC" />
+
     <androidx.fragment.app.FragmentContainerView
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:id="@+id/navHostFragment"
