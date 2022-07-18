@@ -4,7 +4,9 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-//This class created for create table of User in the DB by @Entity annotation
+/**
+ * This class created for create a table of User in the DB by @Entity annotation
+ */
 @Entity(tableName = "user_table")
 data class User (
     @PrimaryKey(autoGenerate = true)

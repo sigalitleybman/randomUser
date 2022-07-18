@@ -4,7 +4,6 @@ import com.example.androidassignment.data.Name
 import com.example.androidassignment.data.User
 import com.example.androidassignment.model.UserInfo
 
-//TODO - cast to generics <T> while recieve and while return
 class ConvertUserInfoListToUserList {
 
     companion object{
