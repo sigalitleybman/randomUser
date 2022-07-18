@@ -1,10 +1,7 @@
 package com.example.androidassignment.data.userdatabase
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.androidassignment.data.User
 
 /**
@@ -33,4 +30,11 @@ interface UserDao {
     @Query("DELETE FROM user_table")
     suspend fun deleteAllUsers()
 
+    //TODO- learn what is transaction
+    @Transaction
+    suspend fun deleteAndInsertInTransaction(users: List<User>){
+        // Anything inside this method runs in a single transaction.
+        deleteAllUsers()
+        addAllUsers(users)
+    }
 }

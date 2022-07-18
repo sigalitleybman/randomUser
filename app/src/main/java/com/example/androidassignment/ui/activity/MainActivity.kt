@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager.CONNECTIVITY_ACTION
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
     lateinit var reciever: ConnectionModeChangedReceiver
 
+    lateinit var serviceIntent: Intent //
+    /**
+     * The serviceIntent has the all data for MusicPlayerService service.
+     */
+
     lateinit var musicPlayerButton: ToggleButton
 
     object Consts{
@@ -30,12 +36,12 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        val serviceIntent = Intent(this, MusicPlayerService::class.java)
+       serviceIntent = Intent(this, MusicPlayerService::class.java)
 
         musicPlayerButton = musicButton
         musicPlayerButton.setOnClickListener(View.OnClickListener(){
             if(musicPlayerButton.isChecked){
-                startService(serviceIntent)
+                startService(serviceIntent)//then it calls onStartCommand()
             }else{
                 stopService(serviceIntent)
             }
@@ -43,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        registerToConnectionModeReciever()
+        //registerToConnectionModeReciever()
     }
 
     fun registerToConnectionModeReciever(){
@@ -64,7 +70,17 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onStop() {
         super.onStop()
+        //TODO - add try catch on unregisterReceiver(reciever)
         unregisterReceiver(reciever)
+        stopService(serviceIntent)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        registerToConnectionModeReciever()
+        if(musicPlayerButton.isChecked){
+            startService(serviceIntent)
+        }
     }
 
     override fun onBackPressed() {

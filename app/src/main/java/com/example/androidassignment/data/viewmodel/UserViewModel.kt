@@ -1,14 +1,12 @@
 package com.example.androidassignment.data.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.androidassignment.data.User
 import com.example.androidassignment.data.userdatabase.UserDatabase
 import com.example.androidassignment.data.repository.UserRepository
-import com.example.androidassignment.model.UserInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -55,6 +53,12 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteAllUsers() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteAllUsers()
+        }
+    }
+
+    fun deleteAllAndInsertUsers(users: List<User>){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteAndInsertInTransaction(users)
         }
     }
 }

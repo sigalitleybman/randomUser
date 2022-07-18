@@ -37,4 +37,8 @@ object UserRepository{
     suspend fun deleteAllUsers(){
         userDao.deleteAllUsers()
     }
+
+    suspend fun deleteAndInsertInTransaction(users: List<User>){
+        userDao.deleteAndInsertInTransaction(users)
+    }
 }
