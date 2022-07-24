@@ -19,7 +19,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
      * LiveData NOTIFY observer objects (in UI) every time the data changes in the database.
      * It Holds all the data needed for the UI.
      */
-    lateinit var readAllData: LiveData<List<User>>
+    var readAllData: LiveData<List<User>>
     private val repository: UserRepository
 
     /*companion object{
@@ -35,7 +35,7 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     fun addUser(user: User) {
         /**
-         * viewModelScope - part of coroutine(divide cpu time between different jobs).
+         * viewModelScope - part of coroutine (divide cpu time between different jobs).
          * A SCOPE controls the lifetime of coroutines through its job.
          * Dispatchers.IO - means that i want to run this code in a background thread.
          */

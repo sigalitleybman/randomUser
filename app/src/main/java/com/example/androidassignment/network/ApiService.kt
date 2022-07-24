@@ -14,6 +14,6 @@ interface ApiService {
      * and in our case "https://randomuser.me/api/" there is no parameter, thus we put a dot.
      */
     @GET(".")
-   // we are "calling" (by Call<UserResponse>) data from for our list that we defined in UserResponse class
+   // we are "calling" (by Call<UserResponse>) data from our list that we defined in UserResponse class
     fun getUsers(@Query("results") result: Int): Call<UserResponse>
 }

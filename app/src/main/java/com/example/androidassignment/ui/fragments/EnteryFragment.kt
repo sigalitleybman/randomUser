@@ -101,7 +101,6 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
 
         swipeRefreshLayout.setOnRefreshListener{
             getAllUsersFromApiService()
-            //TODO - better put insertDataToDatabase() when successfully we get all users. because there is option there is nothing to get
             //insertDataToDatabase(userList)
             registerToConnectionModeReciever()
             swipeRefreshLayout.isRefreshing = false
@@ -212,13 +211,13 @@ class EnteryFragment : Fragment(R.layout.fragment_entery), UserAdapter.OnUserCli
      * will update the view with new loaded users.
      */
     private fun insertDataToDatabase(userList: List<UserInfo>){
-       //TODO - put this block in comment because if there is data in db we will delete + add and it
-       // will lead to invoke twice the observer and it is not efficient
-        /* if(checkIfThereIsExistingDataInDB()){
-            deleteDataFromDatabase()
-        }
+        /*// if there is data in db we will delete + add and it
+        // will lead to invoke twice the observer and it is not efficient
+          if(checkIfThereIsExistingDataInDB()){
+             deleteDataFromDatabase()
+         }
 
-        userViewModel.addAllUsers(ConvertUserInfoListToUserList.convertUserInfoListToUserList(userList))*/
+         userViewModel.addAllUsers(ConvertUserInfoListToUserList.convertUserInfoListToUserList(userList))*/
 
         if(checkIfThereIsExistingDataInDB()){
             userViewModel.deleteAllAndInsertUsers(ConvertUserInfoListToUserList.convertUserInfoListToUserList(userList))

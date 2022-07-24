@@ -5,10 +5,12 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager.CONNECTIVITY_ACTION
 import android.os.Bundle
 import android.util.Log
+import android.util.Log.DEBUG
 import android.view.View
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.androidassignment.BuildConfig.DEBUG
 import com.example.androidassignment.R
 import com.example.androidassignment.data.User
 import com.example.androidassignment.data.viewmodel.UserViewModel
@@ -20,11 +22,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var userViewModel: UserViewModel
     lateinit var reciever: ConnectionModeChangedReceiver
 
-    lateinit var serviceIntent: Intent //
     /**
      * The serviceIntent has the all data for MusicPlayerService service.
      */
-
+    lateinit var serviceIntent: Intent
     lateinit var musicPlayerButton: ToggleButton
 
     object Consts{
@@ -71,7 +72,12 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         //TODO - add try catch on unregisterReceiver(reciever)
-        unregisterReceiver(reciever)
+        //unregisterReceiver(reciever)
+        try {
+            unregisterReceiver(reciever)
+        }catch (message: Exception){
+            Log.d(Consts.TAG, "Problem with unregister receiver")
+        }
         stopService(serviceIntent)
     }
 

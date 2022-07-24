@@ -12,6 +12,9 @@ import com.example.androidassignment.model.UserInfo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_user_details.*
 
+/**
+ * This class responsible for set all fields in a UserDetailsFragment
+ */
 class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
     private lateinit var user: UserInfo
     private lateinit var userName: TextView
@@ -36,6 +39,7 @@ class UserDetailsFragment : Fragment(R.layout.fragment_user_details) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //currentUser: results(the chosen user)
         user = this.arguments?.get("currentUser") as UserInfo
     }
 

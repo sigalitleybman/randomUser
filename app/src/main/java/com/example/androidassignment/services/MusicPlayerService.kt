@@ -28,7 +28,8 @@ class MusicPlayerService : Service() {
     }
 
     /**
-     * Executed every time we call the service by startService(). The service will run in the background indefinitely.
+     * Executed every time we call the service by startService(). The service will run in the
+     * background indefinitely.
      */
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         Toast.makeText(this, "music is playing :)", Toast.LENGTH_SHORT).show()
