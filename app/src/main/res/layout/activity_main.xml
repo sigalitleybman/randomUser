@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityMainLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.MainActivity"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@color/lightBlue">
+    android:background="@color/black"
+    tools:context=".ui.activity.MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Random User Information"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:text="@string/random_user_information"
         android:textColor="@color/red"
-        android:paddingTop="16dp" />
+        android:textStyle="bold"
+        android:textSize="@dimen/textSizeTitle"
+        app:layout_constraintBottom_toTopOf="@+id/musicButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ToggleButton
+        android:id="@+id/musicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/musicButton"
+        android:layout_marginBottom="16dp"
         android:textOff="PLAY MUSIC"
-        android:textOn="STOP MUSIC" />
+        android:textOn="STOP MUSIC"
+        app:layout_constraintBottom_toTopOf="@+id/navHostFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:name="androidx.navigation.fragment.NavHostFragment"
         android:id="@+id/navHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:layout_margin="16dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#000000"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/musicButton"
+        app:navGraph="@navigation/nav_graph" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
