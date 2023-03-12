@@ -30,12 +30,13 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="user name: "
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/textSizeUserDetails"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/guideline1" />
+
 
         <TextView
             android:id="@+id/detailUserCountdownBirthday"
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="countdown to the next birthday: "
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/textSizeUserDetails"
             app:layout_constraintBottom_toTopOf="@id/guideline3"
             app:layout_constraintEnd_toEndOf="parent"
