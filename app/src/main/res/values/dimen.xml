@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textSizeTitle">@dimen/_50sdp</dimen>
+    <dimen name="textSizeTitle">@dimen/_40sdp</dimen>
     <dimen name="textSizeUserDetails">@dimen/_15sdp</dimen>
+    <dimen name="textSizeUserItem">@dimen/_12sdp</dimen>
+    <dimen name="guideLineUserItem">@dimen/_80sdp</dimen>
 </resources>
